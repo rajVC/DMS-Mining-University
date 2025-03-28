@@ -72,7 +72,7 @@ export const useUniversityActions = () => {
     } else {
       toast({
         variant: "destructive",
-        title: "Student Not crated",
+        title: "Student Not created",
         description: res.message,
       });
     }
