@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { cn } from "@/lib/utils"
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LoaderCircle } from "lucide-react";
+import { LoaderCircle, Eye, EyeOff } from "lucide-react";
 import { useForm } from "react-hook-form";
 
 import { Button } from "@/components/ui/button";
@@ -25,6 +25,7 @@ export default function LoginForm({
   const router = useRouter()
   const { toast } = useToast()
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const form = useForm<LoginData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -44,20 +45,21 @@ export default function LoginForm({
 
       if (!res?.error) {
         toast({
-          title: "Login successful",
+          title: "Login Successful",
           description: "You are now logged in.",
         });
-        
+
         router.push(callbackUrl || "/");
+        router.refresh();
         return;
       }
       const error = await getAuthError();
       toast({
         variant: "destructive",
-        title: "Authentication failed",
+        title: "Authentication Failed",
         description: error || "Please check your credentials and try again",
       });
-    } catch(error: unknown) {
+    } catch (error: unknown) {
       toast({
         variant: "destructive",
         title: "Uh oh! Something went wrong.",
@@ -101,7 +103,16 @@ export default function LoginForm({
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input type="password" placeholder="Password" {...field} />
+                      <div className="relative">
+                        <Input type={showPassword ? "text" : "password"} placeholder="Password" {...field} />
+                        <button
+                          type="button"
+                          onClick={() => setShowPassword(!showPassword)}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                        >
+                          {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                        </button>
+                      </div>
                     </FormControl>
                     <FormMessage>{fieldState.error?.message}</FormMessage>
                   </FormItem>

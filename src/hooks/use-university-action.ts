@@ -18,7 +18,7 @@ export const useUniversityActions = () => {
 
     if (res.status === "fail") {
       toast({
-        title: "Not assigned",
+        title: "Not Assigned License",
         variant: "destructive",
         description: res.message,
       });
@@ -41,7 +41,7 @@ export const useUniversityActions = () => {
 
     if (res.status === "fail") {
       toast({
-        title: "Not removed",
+        title: "Not Removed License",
         variant: "destructive",
         description: res.message,
       });
@@ -64,7 +64,7 @@ export const useUniversityActions = () => {
 
     if (res.status === "success") {
       toast({
-        title: "Create student successful",
+        title: "Create Student Successful",
         description: res.message,
       });
       router.refresh();
@@ -72,7 +72,7 @@ export const useUniversityActions = () => {
     } else {
       toast({
         variant: "destructive",
-        title: "Student Not created",
+        title: "Student Not Created",
         description: res.message,
       });
     }
@@ -85,7 +85,7 @@ export const useUniversityActions = () => {
     })
     if (res.status === "success") {
       toast({
-        title: "Create students successful",
+        title: "Create Students Successful",
         description: res.message,
       });
       if (res.data.total_unassigned_students > 0) { setIsWarningOpen(true) }
@@ -94,7 +94,7 @@ export const useUniversityActions = () => {
     } else {
       toast({
         variant: "destructive",
-        title: "Students not created",
+        title: "Students Not Created",
         description: res.message,
       });
     }
@@ -127,7 +127,7 @@ export const useUniversityActions = () => {
     } else {
       toast({
         variant: "destructive",
-        title: "Download failed",
+        title: "Download Failed",
         description: res.message,
       });
     }
@@ -154,7 +154,7 @@ export const useUniversityActions = () => {
 
     if (res.status === "fail") {
       toast({
-        title: "Cannot delete",
+        title: "Cannot Delete Student",
         variant: "destructive",
         description: res.message,
       });
@@ -177,7 +177,7 @@ export const useUniversityActions = () => {
 
     if (res.status === "success") {
       toast({
-        title: "Update student successful",
+        title: "Update Student Successful",
         description: res.message,
       });
       router.refresh();

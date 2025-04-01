@@ -42,7 +42,7 @@ export default function ChangePassword({
 
             if (res.status === "success") {
                 toast({
-                    title: "Password change successful",
+                    title: "Password Change Successful",
                     description: res.message,
                 });
                 form.reset();
@@ -50,7 +50,7 @@ export default function ChangePassword({
             } else {
                 toast({
                     variant: "destructive",
-                    title: "Cannot change password",
+                    title: "Cannot Change Password",
                     description: res.message,
                 });
                 form.reset();

@@ -49,7 +49,7 @@ const DownloadFile = ({ url, params }: { url: string, params: ParamsType }) => {
         } else {
             toast({
                 variant: "destructive",
-                title: "Download failed",
+                title: "Download Failed",
                 description: res.message,
             });
         }

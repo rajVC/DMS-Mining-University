@@ -49,7 +49,7 @@ export default function CreateSeed() {
       });
       if (res.status === "success") {
         toast({
-          title: "Create seed successful",
+          title: "Create Seed Successful",
           description: res.message,
         });
         form.reset();
